@@ -8,7 +8,7 @@
 > 4. groups the tasks into phases with exit gates (§4–§5),
 > 5. lists lead-time items, new risks and Windows notes for this machine (§6–§8).
 >
-> Updated Oct 29 with your answers: solo team, photosynthesis, **Hindi instead of Kiswahili**, OnePlus Nord 2T + Pixel 9, repo `litepack`. All decisions live in [`DECISIONS.md`](DECISIONS.md) (D1–D18). **Wherever 01–03 say Kiswahili / `sw`, read Hindi / `hi`.**
+> Updated Sat Oct 31 with your answers: solo team, photosynthesis, **Hindi instead of Kiswahili**, OnePlus Nord 2T + Pixel 9, repo `litepack`. All decisions live in [`DECISIONS.md`](DECISIONS.md) (D1–D18). **Wherever 01–03 say Kiswahili / `sw`, read Hindi / `hi`.** P0 slipped about 1.5 days; §6.1 has the catch-up schedule.
 
 ---
 
@@ -135,9 +135,9 @@ All dated 2026-10-29. `DECISIONS.md` is the authoritative copy.
 
 | Phase | Dates (2026) | Goal | Tasks | Exit gate |
 |---|---|---|---|---|
-| **P0** Foundation | Thu Oct 29 – Fri Oct 30 | Repo, tools, decisions, accounts, content started | T01–T03 | G0 |
-| **P1** Pack contract | Fri Oct 30 – Sat Oct 31 | Freeze the interface between pipeline and app | T04–T05 | G1 |
-| **P2** Pipeline core (no AI) | Sat Oct 31 – Tue Nov 3 | One command → valid pack, report, VTT | T06–T12 | G2 |
+| **P0** Foundation | Thu Oct 29 – Sat Oct 31 | Repo, tools, decisions, accounts, content started | T01–T03 | G0 |
+| **P1** Pack contract | Sat Oct 31 | Freeze the interface between pipeline and app | T04–T05 | G1 |
+| **P2** Pipeline core (no AI) | Sun Nov 1 – Tue Nov 3 | One command → valid pack, report, VTT | T06–T12 | G2 |
 | **P3** App core, offline, deployed | Wed Nov 4 – Sun Nov 8 (scaffold can start Oct 31) | Live URL works in airplane mode on a real phone | T13–T19 | **G3: minimum demoable product** |
 | **P4** AI and remaining screens | Mon Nov 9 – Thu Nov 12 | Summary, glossary, quiz, Hindi; Summary/Practice/Listen | T20–T25 | **G4: feature-complete MVP** |
 | **P5** Accessibility, settings, share, P1 | Fri Nov 13 – Sun Nov 15 | Audit passes; P1 as far as time allows | T26–T30 | G5 |
@@ -150,7 +150,7 @@ Gates are hard stops: don't start the next phase's MVP work with a red gate. Two
 
 ## 5. Phase details
 
-### P0 · Foundation (Oct 29–30): T01, T02, T03
+### P0 · Foundation (Oct 29–31): T01, T02, T03
 
 **Steps**
 1. *Done:* repo root is `newHack/litepack/`, docs moved into `docs/`, with `LICENSE` (MIT), `.gitignore`, `.gitattributes`, `README.md`, `docs/DECISIONS.md`, `docs/TESTING-LOG.md`. Empty folders from the 02 §3 layout get created by the tasks that fill them (T04, T05, T13).
@@ -161,9 +161,9 @@ Gates are hard stops: don't start the next phase's MVP work with a red gate. Two
 6. **You:** record lesson A on photosynthesis: 5–8 minutes, 6–10 distinct slides, clear English voice. Use slide text of 24 pt or larger. Export as **MP4, 854×480 (480p), H.264 + AAC**, so the size comparison is against a fair streaming quality (03 §7). Kiro can draft the slide script.
 7. **You:** start recruiting 3–5 user testers now (§6.3), including at least one Hindi reader.
 
-**G0 (exit):** repo public with the first commit pushed · `DECISIONS.md` complete · lesson B `lesson.toml` complete · lesson A recorded, or recording set for no later than Nov 1 · `git status` clean with videos ignored.
+**G0 (exit):** repo public with the first commit pushed · `DECISIONS.md` complete · lesson B `lesson.toml` complete · lesson A recorded, or recording set for no later than Nov 2 · `git status` clean with videos ignored.
 
-### P1 · Pack contract (Oct 30–31): T04, T05
+### P1 · Pack contract (Oct 31): T04, T05
 
 **Notes**
 - `uv init --package --name litepack --python 3.12` inside `pipeline/`, then edit `pyproject.toml` per 02 §5.5 with D4, then `uv python pin 3.12` and `uv sync`.
@@ -175,7 +175,7 @@ Gates are hard stops: don't start the next phase's MVP work with a red gate. Two
 
 **G1:** `uv run litepack --help` lists every subcommand · `build` prints the parsed config for both lessons · schema committed · `uv run pytest tests/test_manifest.py` passes.
 
-### P2 · Pipeline core without AI (Oct 31 – Nov 3): T06–T12
+### P2 · Pipeline core without AI (Nov 1–3): T06–T12
 
 **Notes per task**
 - **T06** `media.py`: `run()` raises with ffmpeg's stderr; `probe()` fails fast without an audio stream; stage cache = "output exists" check plus `--force`. Check `audio.ogg` size against 16 kbps × duration ÷ 8 (±20%).
@@ -247,9 +247,9 @@ Kiro writes the code, tests and docs. These tasks need you in person: accounts, 
 
 | Dates | You | Kiro |
 |---|---|---|
-| Oct 29–30 | Create the empty `litepack` repo and send the URL · AI Studio key in `pipeline/.env` · pick and download lesson B (video + `.srt`) | First push · T04–T05 |
-| Oct 31 – Nov 1 | Record lesson A (photosynthesis, 480p MP4) | T06–T07 on lesson B and the fixture · T13 scaffold |
-| Nov 2–3 | Look at `debug.html` for both lessons and confirm each slide appears once | T08–T12 · lesson A build |
+| **Sat Oct 31** (today) | Create the empty `litepack` repo and send the URL · AI Studio key in `pipeline/.env` · pick and download lesson B (video + `.srt`) | First push · T04–T05 (needs nothing from you) |
+| Sun Nov 1 – Mon Nov 2 | Record lesson A (photosynthesis, 480p MP4) by Nov 2 at the latest | T06–T07 on lesson B and the fixture · T12 fixture · T13 scaffold |
+| Tue Nov 3 | Look at `debug.html` for both lessons and confirm each slide appears once | T08–T11 · lesson A build |
 | Nov 4–8 | **Nov 8:** live URL on the Nord 2T, save lesson A, airplane mode (G3); log Android and Chrome versions | T14–T19 |
 | Nov 9–12 | **Nov 11–12:** check every quiz answer; review the Hindi | T20–T25 |
 | Nov 13–15 | **Nov 14:** share test, Nord 2T → Pixel 9 · review `hi.json` UI strings · practise TalkBack | T26–T30 |
@@ -271,7 +271,7 @@ The tightest stretch is P4: the quiz must be checked and the Hindi reviewed befo
 | Hindi review time (you) | Nov 11–12 (T22), Nov 15 (T30) | Block about 2 hours for each |
 | 3–5 testers: someone on a weak connection, someone using a screen reader or large text, at least one Hindi reader | Nov 16–17 | Verbal consent; record no names or faces |
 | OnePlus Nord 2T (learner phone) and Pixel 9 (second device) | Nov 8 (T19), Nov 14 (T28) | Install the Hindi voice in Speech Services by Google on both |
-| Lesson A recording | Nov 1 | Needed to tune ASR and key frames |
+| Lesson A recording | Nov 2 | Needed to tune ASR and key frames |
 | Lesson B video + `.srt` | Oct 30 | Shortlist below |
 | AI Studio project + key | Nov 9 (check limits on Oct 30) | Per-project quota |
 | TalkBack practice | Nov 16 | Practise on the fixture pack during P5 |
@@ -312,7 +312,7 @@ These extend 03 §11.
 
 ## 9. Open questions
 
-Answered Oct 29: solo team · photosynthesis · Hindi (you review) · OnePlus Nord 2T + Pixel 9 · name LitePack, repo `litepack` · root `newHack/litepack/`.
+Answered Oct 31: solo team · photosynthesis · Hindi (you review) · OnePlus Nord 2T + Pixel 9 · name LitePack, repo `litepack` · root `newHack/litepack/`.
 
 Still needed from you:
 1. **The repo URL**, after you create the empty public repo `litepack`.

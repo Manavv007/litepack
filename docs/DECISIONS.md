@@ -58,10 +58,10 @@ Keep the `canShare` check, but treat download + instructions as the main path, a
 ### D11 · UTF-8 and POSIX paths in the pipeline — 2026-10-29
 Pass `encoding="utf-8"` to every file read/write; set `PYTHONUTF8=1` in `.env.example`. Build manifest and zip paths as strings (`f"frames/{fid}.webp"`) or `.as_posix()`, never `str(Path)`. **Why:** Windows defaults to cp1252 and backslash paths, which corrupt Devanagari text and fail the `^frames/f\d{2,3}\.webp$` rule.
 
-### D12 · Lesson A topic: photosynthesis — 2026-10-29
+### D12 · Lesson A topic: photosynthesis — 2026-10-31
 Changes T03's example ("Adding fractions"). **Why:** the persona, example manifest, demo script and user-test task 1 all assume photosynthesis.
 
-### D13 · Target language: Hindi (`hi`) instead of Kiswahili (`sw`) — 2026-10-29
+### D13 · Target language: Hindi (`hi`) instead of Kiswahili (`sw`) — 2026-10-31
 The documented fallback in Brief §8: no fluent Kiswahili reviewer is available, and the team member reads Hindi and Gujarati fluently.
 - `target_languages = ["hi"]`; files become `translate.hi.json`, `captions/<id>.hi.vtt`, `app/src/i18n/hi.json`. Language name for prompts: `Hindi`; autonym in the UI: `हिन्दी`. The `LangModeToggle` reads *English / हिन्दी / Both*.
 - Hindi was chosen over Gujarati because it reaches far more learners and has far more training data for machine translation. **Gujarati (`gu`) moves to P2** ("more target languages"); it needs a toggle redesign for three languages.
@@ -69,7 +69,7 @@ The documented fallback in Brief §8: no fluent Kiswahili reviewer is available,
 - P2 offline MT becomes `Helsinki-NLP/opus-mt-en-hi` (exists on Hugging Face, Apache-2.0). No `opus-mt-en-gu` model exists.
 - Extra checks: Devanagari renders with the system font (no web fonts), and TalkBack switches to a Hindi voice on `lang="hi"` text (install the Hindi voice in Speech Services by Google on both phones).
 
-### D14 · Personas and evidence for India — 2026-10-29
+### D14 · Personas and evidence for India — 2026-10-31
 Replaces Brief §3. Personas are **fictional composites**; the submission says so.
 
 - **Learner: Pooja, 16.** Class 10, in a village in north India. She is taught science in English and speaks Hindi at home. She doesn't own a phone; she uses her father's Android phone in the evenings. Mobile signal at home is weak and drops often.
@@ -85,14 +85,14 @@ Replaces Brief §3. Personas are **fictional composites**; the submission says s
 
 **Effect on 01 §4 (before/after):** the *Language* row becomes "English audio only → English + Hindi text, side by side". The one-line pitch becomes "‹X› MB that needs a steady signal → ‹Y› MB that works offline, in Hindi."
 
-### D15 · Solo team — 2026-10-29
+### D15 · Solo team — 2026-10-31
 One team member (Manav) plus AI coding assistance (disclosed). Tasks run in 03 order with no parallel tracks. Work that needs a person (recording, phones, accounts, reviews, user tests, video, Devpost) is listed with dates in [04 §6.1](04-EXECUTION-PLAN.md#61-solo-schedule-who-does-what).
 
-### D16 · Test devices — 2026-10-29
+### D16 · Test devices — 2026-10-31
 **OnePlus Nord 2T** is the learner phone for every real-device check. **Google Pixel 9** is the second device for the share test (T28) and a second TalkBack run. Neither is an old phone, so old-device performance comes from the 4× CPU-throttle measurement (T31) and is labelled as an estimate. Record each phone's Android and Chrome versions in `TESTING-LOG.md` at T19.
 
-### D17 · Name and repository — 2026-10-29
+### D17 · Name and repository — 2026-10-31
 Project name stays **LitePack**. GitHub repo: `litepack` (public), so `BASE_PATH=/litepack/`. Local repo root: `newHack/litepack/`, with these docs in `docs/`. The npm name `litepack` belongs to an unrelated package and a few small GitHub repos use the name; this doesn't matter because nothing is published to npm or PyPI.
 
-### D18 · Default branch `main` — 2026-10-29
+### D18 · Default branch `main` — 2026-10-31
 Created with `git init -b main` (the global git default stays unchanged). **Why:** 03 §4 CI triggers on `main`.
